@@ -1,0 +1,37 @@
+[
+	{
+		"doctorName":"Nawaj",
+		"doctorId":"1",
+		"specialisation":"",
+		"availability":"5",
+		"countOfPateints":"0"
+	},
+	{
+		"doctorName":"Sameer",
+		"doctorId":"2",
+		"specialisation":"",
+		"availability":"5",
+		"countOfPateints":"0"
+	},
+	{	
+		"doctorName":"Saket",
+		"doctorId":"3",
+		"specialisation":"",
+		"availability":"5",
+		"countOfPateints":"0"
+	},
+	{
+		"doctorName":"Rohit",
+		"doctorId":"4",
+		"specialisation":"",
+		"availability":"5",
+		"countOfPateints":"0"
+	},
+	{
+		"doctorName":"Abhilash",
+		"doctorId":"5",
+		"specialisation":"",
+		"availability":"5",
+		"countOfPateints":"0"
+	}
+]
