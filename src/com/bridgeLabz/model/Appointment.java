@@ -1,5 +1,6 @@
 package com.bridgeLabz.model;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ String doctorName;
 String doctorId;
 String timeStamp;
 
-public static List appointmentList=new LinkedList();
+public static List<Appointment> appointmentList=new <Appointment>LinkedList();
 public String getPatientName() {
 	return patientName;
 }

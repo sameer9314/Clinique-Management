@@ -5,7 +5,7 @@ public interface PatientService {
 		void showPatientDetails();
 		void searchPatientByName();
 		void searchPatientByMobileNumber();
-		void searchPatientById();
+		void searchPatientById(String patientId);
 		void showPopularDoctor();
 		void showPopularSpecialisation();
 		

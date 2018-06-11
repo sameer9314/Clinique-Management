@@ -1,5 +1,11 @@
 package com.bridgelabz.serviceimplementation;
 
+import java.io.FileReader;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import com.bridgeLabz.model.Doctor;
 import com.bridgelabz.service.DoctorService;
 import com.bridgelabz.utility.Utility;
@@ -13,7 +19,7 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 	public void searchDoctorByName() {
 		System.out.println("Enter the name of Doctor to search");
-		String doctorName=toString();
+		String doctorName=Utility.getString();
 		for(int i=0;i<Doctor.doctorList.size();i++) {
 			if((doctorName).equalsIgnoreCase((Doctor.doctorList.get(i).getDoctorName()))) {
 				Utility.printOneEntries(i);
@@ -52,4 +58,5 @@ public class DoctorServiceImpl implements DoctorService{
 			}
 			Utility.printOneEntries(index);
 	}
+	
 }

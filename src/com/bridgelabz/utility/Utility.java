@@ -1,14 +1,16 @@
 package com.bridgelabz.utility;
 
 import java.io.FileReader;
+//import java.time.LocalDateTime;
+//import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import com.bridgeLabz.model.*;
-import com.bridgelabz.serviceimplementation.ManagerServiceImpl;
-import com.bridgelabz.serviceimplementation.PatientServiceImpl;
+//import com.bridgelabz.serviceimplementation.ManagerServiceImpl;
+//import com.bridgelabz.serviceimplementation.PatientServiceImpl;
 
 
 public class Utility {
@@ -21,132 +23,154 @@ public class Utility {
 	public static void recoveringDoctorData(){
 		JSONParser parser=new JSONParser();
 			try {
-				JSONArray a=(JSONArray) parser.parse(new FileReader("/home/administrator/eclipse-workspace/CliniqueManagement/src/com/bridgelabz/files/doctor.json"));
-				for(int j=0;j<a.size();j++) {
-					Doctor d=new Doctor();
-					JSONObject ob=	(JSONObject) a.get(j);
-					d.setDoctorName(ob.get("doctorName").toString());
-					d.setDoctorId(ob.get("doctorId").toString());
-					d.setSpecialisation(ob.get("specialisation").toString());
-					d.setAvailability(Integer.parseInt(ob.get("availability").toString()) );
-					d.setCountOfPeople(Integer.parseInt(ob.get("countOfPateints").toString()) );
-					
-					Doctor.doctorList.add(d);
+				JSONArray jsonArray=(JSONArray) parser.parse(new FileReader("/home/administrator/eclipse-workspace/CliniqueManagement/src/com/bridgelabz/files/doctor.json"));
+				//System.out.println("JSONArray of doctor "+jsonArray);
+				for(int j=0;j<jsonArray.size();j++) {
+					Doctor doctorObject=new Doctor();
+					JSONObject jsonObject=	(JSONObject) jsonArray.get(j);
+					doctorObject.setDoctorName(jsonObject.get("doctorName").toString());
+					doctorObject.setDoctorId(jsonObject.get("doctorId").toString());
+					doctorObject.setSpecialisation(jsonObject.get("specialisation").toString());
+					doctorObject.setAvailability(Integer.parseInt(jsonObject.get("availability").toString()));
+					doctorObject.setCountOfPeople(Integer.parseInt(jsonObject.get("countOfPateints").toString()) );
+					Doctor.doctorList.add(doctorObject);
 					}
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
-	/*****************************************************************************************************/
-	 public static void printAllEntries () {
+	
+	public static void printAllEntries () {
 		 for(int i=0;i<Doctor.doctorList.size();i++) {
-		 System.out.println(Doctor.doctorList.get(i).getDoctorName());
-		 System.out.println(Doctor.doctorList.get(i).getDoctorId());
-		 System.out.println(Doctor.doctorList.get(i).getSpecialisation());
-		 System.out.println(Doctor.doctorList.get(i).isAvailability());
-		 System.out.println(Doctor.doctorList.get(i).getCountOfPeople());
+			 System.out.println("_______________________________");
+			 System.out.println("Printing Details of Doctor "+(i+1));
+			 System.out.println("_______________________________");
+		 System.out.println(" Doctor Name : "+Doctor.doctorList.get(i).getDoctorName());
+		 System.out.println(" Doctor Id : "+Doctor.doctorList.get(i).getDoctorId());
+		 System.out.println(" Doctor Specialisation : "+Doctor.doctorList.get(i).getSpecialisation());
+		 System.out.println(" Doctor Availability : "+Doctor.doctorList.get(i).isAvailability());
+		 System.out.println(" Count of People : "+Doctor.doctorList.get(i).getCountOfPeople());
 		 
 		 System.out.println();
 		}
 	}
 	 
-	 /*****************************************************************************************************/
 	 public static void printOneEntries (int index) {
 	//	 for(int i=0;i<Doctor.doctorList.size();i++) {
-		 System.out.println(Doctor.doctorList.get(index).getDoctorName());
-		 System.out.println(Doctor.doctorList.get(index).getDoctorId());
-		 System.out.println(Doctor.doctorList.get(index).getSpecialisation());
-		 System.out.println(Doctor.doctorList.get(index).isAvailability());
-		 System.out.println(Doctor.doctorList.get(index).getCountOfPeople());
+		 System.out.println(" Doctor Name : "+Doctor.doctorList.get(index).getDoctorName());
+		 System.out.println(" Doctor Id : "+Doctor.doctorList.get(index).getDoctorId());
+		 System.out.println(" Doctor Specialisation : "+Doctor.doctorList.get(index).getSpecialisation());
+		 System.out.println(" Doctor Availability : "+Doctor.doctorList.get(index).isAvailability());
+		 System.out.println(" Count of People : "+Doctor.doctorList.get(index).getCountOfPeople());
 		 
 		 System.out.println();
 		//}
 	}
+	 
+	 public static void doctorSpecifications() {
+		 System.out.println(" Available Departments In Clinic");
+		 for(int i=0;i<Doctor.doctorList.size();i++){
+			 System.out.println((i+1)+". "+Doctor.doctorList.get(i).getSpecialisation());
+		 }
+	 }
 	 
 /*********************************************** Doctors implementation ends ************************************************************************************/	 
 
 	 
 /*********************************************** Manager implements starts **********************************************************************************/
 	 
-	 public static void setPersonDetails() {
-		 System.out.println("Enter the patient Name");
-		 ManagerServiceImpl.p.setPatientName(Utility.getString());
-		 System.out.println("Enter the patient Id");
-		 ManagerServiceImpl.p.setPatientId(Utility.getString());
-		 System.out.println("Enter the patient Phone Number");
-		 ManagerServiceImpl.p.setPatientMobileNumber(Utility.getString());
-		 System.out.println("Enter the patient Age");
-		 ManagerServiceImpl.p.setPatientAge(Utility.getString());
-		 
-	 }
-	 
-	 public static void updatePatientDetail() {
-		 System.out.println("Enter Patient Id to update the information");
-		 String patientId=Utility.getString();
-		 int index=0;
-		 for(int i=0;i<Patient.patientList.size();i++) {
-			 if(patientId.equalsIgnoreCase(Patient.patientList.get(i).getPatientId())) {
-				 index=i;
-			 }
-		 }
-		 System.out.println("Enter the patient Name");
-		 Patient.patientList.get(index).setPatientName(Utility.getString());
-		 System.out.println("Enter the patient Id");
-		 Patient.patientList.get(index).setPatientId(Utility.getString());
-		 System.out.println("Enter the patient Phone Number");
-		 Patient.patientList.get(index).setPatientMobileNumber(Utility.getString());
-		 System.out.println("Enter the patient Age");
-		 Patient.patientList.get(index).setPatientAge(Utility.getString());
-	 }
-	 
-	 public static void deletePatient() {
-		 System.out.println("Enter Patient Id to update the information");
-		 String patientId=Utility.getString();
-		 int index=0;
-		 for(int i=0;i<Patient.patientList.size();i++) {
-			 if(patientId.equalsIgnoreCase(Patient.patientList.get(i).getPatientId())) {
-				 index=i;
-			 }
-		 }
-		 Patient.patientList.remove(index);
-	 }
+
 /*********************************************** Manager implements ends **********************************************************************************/	
 
 	 
 /*********************************************** Patient implementation starts **********************************************************************************/	
-	 public static void  takeAppointment() {
-		 System.out.println("Enter the id of the patient to get the appointment");
-		 String patientId=null;
-		 for(int i=0;i<Patient.patientList.size();i++) {
-			 if(patientId.equalsIgnoreCase(Patient.patientList.get(i).getPatientId())) {
-				 Utility.printOnePatientDetails(i);
-			 }
-		 }
-	 }
+
 	 
 	 public static void printOnePatientDetails(int index) {
-		 
-			 System.out.println(Patient.patientList.get(index).getPatientName());
-			 System.out.println(Patient.patientList.get(index).getPatientId());
-			 System.out.println(Patient.patientList.get(index).getPatientMobileNumber());
-			 System.out.println(Patient.patientList.get(index).getPatientAge());
+		 	 
+			 System.out.println("Patient Name : "+Patient.patientList.get(index).getPatientName());
+			 System.out.println("Patient Id : "+Patient.patientList.get(index).getPatientId());
+			 System.out.println("Patient Mobile Number : "+Patient.patientList.get(index).getPatientMobileNumber());
+			 System.out.println("Patient Age : "+Patient.patientList.get(index).getPatientAge());
 			 
 			 System.out.println();
 	 }
 	 
 	 public static void printAllPatientDetails () {
+		 System.out.println("Patient list size is :"+Patient.patientList.size());
 		 for(int i=0;i<Patient.patientList.size();i++) {
-		 System.out.println(Patient.patientList.get(i).getPatientName());
-		 System.out.println(Patient.patientList.get(i).getPatientId());
-		 System.out.println(Patient.patientList.get(i).getPatientMobileNumber());
-		 System.out.println(Patient.patientList.get(i).getPatientAge());
+		 System.out.println("_______________________________");
+		 System.out.println("Patient "+(i+1)+" details ");
+		 System.out.println("_______________________________");
+		 System.out.println("Patient Name : "+Patient.patientList.get(i).getPatientName());
+		 System.out.println("Patient Id : "+Patient.patientList.get(i).getPatientId());
+		 System.out.println("Patient Mobile Number : "+Patient.patientList.get(i).getPatientMobileNumber());
+		 System.out.println("Patient Age : "+Patient.patientList.get(i).getPatientAge());
 		 
 		 System.out.println();
 		}
 	}
 	 
+	 public static void retrievingPatientDetails(){
+			JSONParser parser=new JSONParser();
+				try {
+					JSONArray jsonArray=(JSONArray) parser.parse(new FileReader("/home/administrator/eclipse-workspace/CliniqueManagement/src/com/bridgelabz/files/patient.json"));
+					//System.out.println("JSONArray of Patient "+jsonArray);
+					for(int j=0;j<jsonArray.size();j++) {
+						Patient patientObject=new Patient();
+						JSONObject jsonObject=	(JSONObject) jsonArray.get(j);
+						patientObject.setPatientName(jsonObject.get("patientName").toString());
+						patientObject.setPatientId(jsonObject.get("patientId").toString());
+						patientObject.setPatientMobileNumber(jsonObject.get("patientMobileNumber").toString());
+						patientObject.setPatientAge((jsonObject.get("patientAge").toString()));
+						Patient.patientList.add(patientObject);
+						}
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
 /*********************************************** Patient implements ends **********************************************************************************/	
+
+/************************************************ Appointment implements starts*****************************************************************************/
+	public static void appointmentDetails() {
+		 System.out.println(" Printing appointment Details");
+		 System.out.println("Appointment List size is : "+Appointment.appointmentList.size());
+		 for(int i=0;i<Appointment.appointmentList.size();i++) {
+			 System.out.println("_______________________________");
+			 System.out.println("Printing "+(i+1)+" Appointment");
+			 System.out.println("_______________________________");
+			 System.out.println(" Patient Name : "+Appointment.appointmentList.get(i).getPatientName());
+			 System.out.println(" Patient Id : "+Appointment.appointmentList.get(i).getPatientId());
+			 System.out.println(" Doctor Name : "+Appointment.appointmentList.get(i).getDoctorName());
+			 System.out.println(" Doctor Id : "+Appointment.appointmentList.get(i).getDoctorId());
+			 System.out.println(" Time Stamp : "+Appointment.appointmentList.get(i).getTimeStamp());
+		 }
+	 }
+	
+	public static void retrievingAppointmentDetails(){
+		JSONParser parser=new JSONParser();
+			try {
+				JSONArray jsonArray=(JSONArray) parser.parse(new FileReader("/home/administrator/eclipse-workspace/CliniqueManagement/src/com/bridgelabz/files/appointment.json"));
+				//System.out.println("JSONArray of Appointment "+jsonArray);
+				for(int j=0;j<jsonArray.size();j++) {
+					Appointment appointmentObject=new Appointment();
+					JSONObject jsonObject=	(JSONObject) jsonArray.get(j);
+					appointmentObject.setPatientName(jsonObject.get("patientName").toString());
+					appointmentObject.setPatientId(jsonObject.get("patientId").toString());
+					appointmentObject.setDoctorName(jsonObject.get("doctorName").toString());
+					appointmentObject.setDoctorId(jsonObject.get("doctorId").toString());
+					appointmentObject.setTimeStamp(jsonObject.get("timeStamp").toString());
+					Appointment.appointmentList.add(appointmentObject);
+					}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	 
+/*************************************************Appointment implements ends*******************************************************************************/	 
 
 	 /*****************************************
 		 * Generate one Integer
