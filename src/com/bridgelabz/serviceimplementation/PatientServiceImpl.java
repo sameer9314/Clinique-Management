@@ -7,14 +7,18 @@ import com.bridgeLabz.model.*;
 import com.bridgelabz.service.PatientService;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * Purpose : To implement all the behaviours provided for the Patient Service .
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class PatientServiceImpl implements PatientService{
 	public static Appointment appointment;
-//	public void takeAppointment() {
-//		appointment=new Appointment();
-//		Utility.takeAppointment();
-//		System.out.println("Adding appointments to the list ");
-//		Appointment.appointmentList.add(appointment);
-//	}
+
+	/**
+	 * Method is written to Take Appointments. 
+	 */
 	public void  takeAppointment() {
 		 Utility.doctorSpecifications();
 		 System.out.println("Enter the id of the patient to get the appointment");
@@ -25,6 +29,10 @@ public class PatientServiceImpl implements PatientService{
 				 index=i;
 			 }
 		 }
+		 if(index==0) {
+			 System.out.println(" Id not found ");
+			 return;
+			 }
 		 System.out.println(" Enter the Doctor Specialisation To Get The Doctor Appointment ");
 		 String specialisation=Utility.getString();
 		 for(int i=0;i<Doctor.doctorList.size();i++) {
@@ -53,10 +61,16 @@ public class PatientServiceImpl implements PatientService{
 		System.out.println("Doctor Not Available");
 	 }
 	
-	
+	/**
+	 * Method is written to show all Patients details to the list. 
+	 */
 	public void showPatientDetails() {
 		Utility.printAllPatientDetails();
 	}
+	
+	/**
+	 * Method is written search patients by Name.
+	 */
 	public void searchPatientByName() {
 		System.out.println(" Enter the Name of the patient to print the patient details");
 		 String patientId=Utility.getString();
@@ -68,6 +82,10 @@ public class PatientServiceImpl implements PatientService{
 		 }
 		 System.out.println(" Name Not Found ");
 	}
+	
+	/**
+	 * Method is written search patients by Mobile Number.
+	 */
 	public void searchPatientByMobileNumber() {
 		System.out.println("Enter the Phone Number of the patient to print the patient details");
 		 String patientId=Utility.getString();
@@ -79,6 +97,11 @@ public class PatientServiceImpl implements PatientService{
 		 }
 		 System.out.println(" Mobile Number Not Found");
 	}
+	
+	/**
+	 * Method is written search patients by Id.
+	 * @param patientId
+	 */
 	public void searchPatientById(String patientId) {
 		System.out.println(" Enter the id of the patient to print the patient details");
 		if(patientId==null) patientId=Utility.getString();
@@ -90,10 +113,37 @@ public class PatientServiceImpl implements PatientService{
 		 }
 		 System.out.println(" Id Not Found");
 	}
+	
+	/**
+	 * Method is written to Display Popular Doctor details in the Clinique.
+	 */
 	public void showPopularDoctor() {
-		
-	} 
+		int index=0;
+		int max=0;
+		for(int i=0;i<Doctor.doctorList.size();i++) {
+			if(Doctor.doctorList.get(i).getCountOfPeople()>max) {
+				max=Doctor.doctorList.get(i).getCountOfPeople();
+				index=i;
+			}
+		}
+		Utility.printOneEntries(index);
+	}
+	
+	/**
+	 * Method is written to Display Popular Specialisation of the Clinique.
+	 */
 	public void showPopularSpecialisation() {
-		
+		int index=0;
+		int max=0;
+		for(int i=0;i<Doctor.doctorList.size();i++) {
+			if(Doctor.doctorList.get(i).getCountOfPeople()>max) {
+				max=Doctor.doctorList.get(i).getCountOfPeople();
+				index=i;
+			}
+		}
+		System.out.println(" ________________________________________");
+		System.out.println(" Popular Specialisation in Clinique is :");
+		System.out.println(" ________________________________________\n");
+		System.out.println(" "+Doctor.doctorList.get(index).getSpecialisation()+"\n");
 	}
 }

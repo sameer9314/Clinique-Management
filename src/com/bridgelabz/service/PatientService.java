@@ -8,6 +8,4 @@ public interface PatientService {
 		void searchPatientById(String patientId);
 		void showPopularDoctor();
 		void showPopularSpecialisation();
-		
-		
 }

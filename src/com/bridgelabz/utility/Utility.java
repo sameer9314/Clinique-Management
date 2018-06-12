@@ -9,9 +9,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import com.bridgeLabz.model.*;
-//import com.bridgelabz.serviceimplementation.ManagerServiceImpl;
-//import com.bridgelabz.serviceimplementation.PatientServiceImpl;
-
 
 public class Utility {
 	private static Scanner scnObj = null;
@@ -20,6 +17,9 @@ public class Utility {
 		scnObj = new Scanner(System.in);
 	}
 /*********************************************** Doctors implements starts **********************************************************************************/	
+	 /**
+	  * Method is written to retrieve all  the Details of the doctors from the Database.
+	  */
 	public static void recoveringDoctorData(){
 		JSONParser parser=new JSONParser();
 			try {
@@ -41,6 +41,9 @@ public class Utility {
 			}
 		}
 	
+	 /**
+	  * Method is written to print all the Details of the Doctor in the Clinique.
+	  */
 	public static void printAllEntries () {
 		 for(int i=0;i<Doctor.doctorList.size();i++) {
 			 System.out.println("_______________________________");
@@ -56,6 +59,9 @@ public class Utility {
 		}
 	}
 	 
+	 /**
+	  * Method is written to print  Details of the particular Doctor from the list.
+	  */
 	 public static void printOneEntries (int index) {
 	//	 for(int i=0;i<Doctor.doctorList.size();i++) {
 		 System.out.println(" Doctor Name : "+Doctor.doctorList.get(index).getDoctorName());
@@ -68,6 +74,9 @@ public class Utility {
 		//}
 	}
 	 
+	 /**
+	  * Method is written to print specifications of the  Doctor present in the Clinique.
+	  */
 	 public static void doctorSpecifications() {
 		 System.out.println(" Available Departments In Clinic");
 		 for(int i=0;i<Doctor.doctorList.size();i++){
@@ -75,18 +84,11 @@ public class Utility {
 		 }
 	 }
 	 
-/*********************************************** Doctors implementation ends ************************************************************************************/	 
-
-	 
-/*********************************************** Manager implements starts **********************************************************************************/
-	 
-
-/*********************************************** Manager implements ends **********************************************************************************/	
-
-	 
 /*********************************************** Patient implementation starts **********************************************************************************/	
 
-	 
+	 /**
+	  * Method is written to print  the Details of the particular Patient.
+	  */
 	 public static void printOnePatientDetails(int index) {
 		 	 
 			 System.out.println("Patient Name : "+Patient.patientList.get(index).getPatientName());
@@ -97,6 +99,9 @@ public class Utility {
 			 System.out.println();
 	 }
 	 
+	 /**
+	  * Method is written to print all the Patient Details from the list.
+	  */
 	 public static void printAllPatientDetails () {
 		 System.out.println("Patient list size is :"+Patient.patientList.size());
 		 for(int i=0;i<Patient.patientList.size();i++) {
@@ -111,7 +116,9 @@ public class Utility {
 		 System.out.println();
 		}
 	}
-	 
+	 /**
+	  * Method is written to retrieve all the Patient Details from the Database.
+	  */
 	 public static void retrievingPatientDetails(){
 			JSONParser parser=new JSONParser();
 				try {
@@ -134,7 +141,10 @@ public class Utility {
 /*********************************************** Patient implements ends **********************************************************************************/	
 
 /************************************************ Appointment implements starts*****************************************************************************/
-	public static void appointmentDetails() {
+	 /**
+	  * Method is written to print all the Appointment Details in the Clinique.
+	  */
+	 public static void appointmentDetails() {
 		 System.out.println(" Printing appointment Details");
 		 System.out.println("Appointment List size is : "+Appointment.appointmentList.size());
 		 for(int i=0;i<Appointment.appointmentList.size();i++) {
@@ -149,6 +159,9 @@ public class Utility {
 		 }
 	 }
 	
+	/**
+	 * Method is written to retrieve all the Appointment Details from the Database.
+	 */
 	public static void retrievingAppointmentDetails(){
 		JSONParser parser=new JSONParser();
 			try {

@@ -1,22 +1,34 @@
 package com.bridgelabz.serviceimplementation;
 
-import java.io.FileReader;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.bridgeLabz.model.Doctor;
 import com.bridgelabz.service.DoctorService;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * Purpose : To implement all the behaviours provided for the Doctors .
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class DoctorServiceImpl implements DoctorService{
+	/**
+	 * Method is written to retrieve all the details of Doctors from the Database.
+	 */
 	public void addDoctor() {
 		Utility.recoveringDoctorData();
 	}
+	
+	/**
+	 * Method is written to print all doctor details present in clinique.
+	 */
 	public void showDoctorDetails() {
 		Utility.printAllEntries();
 	}
+	
+	/**
+	 * Method is written to search doctor details present in clinique by Name.
+	 */
 	public void searchDoctorByName() {
 		System.out.println("Enter the name of Doctor to search");
 		String doctorName=Utility.getString();
@@ -27,6 +39,10 @@ public class DoctorServiceImpl implements DoctorService{
 			}
 		}
 	}
+	
+	/**
+	 * Method is written to search doctor details present in clinique by Id.
+	 */
 	public void searchDoctorById() {
 		System.out.println("Enter the id of Doctor to search");
 		String doctorId=Utility.getString();
@@ -37,7 +53,12 @@ public class DoctorServiceImpl implements DoctorService{
 			}
 		}
 	}
+	
+	/**
+	 * Method is written to search doctor details present in clinique by Specialisation.
+	 */
 	public void searchDoctorBySpecialisation() {
+		Utility.doctorSpecifications();
 		System.out.println("Enter the Specialisation of Doctor to search");
 		String specialisation=Utility.getString();
 		for(int i=0;i<Doctor.doctorList.size();i++) {
@@ -47,6 +68,10 @@ public class DoctorServiceImpl implements DoctorService{
 			}
 		}
 	}
+	
+	/**
+	 * Method is written to search doctor details present in clinique by Availability.
+	 */
 	public 	void searchDoctorByAvailability() {
 			int max=0;
 			int index=0;
@@ -58,5 +83,4 @@ public class DoctorServiceImpl implements DoctorService{
 			}
 			Utility.printOneEntries(index);
 	}
-	
 }

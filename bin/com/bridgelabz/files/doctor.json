@@ -1,5 +1,1 @@
-[{"doctorName":"Nawaj","specialisation":"Accident and emergency","doctorId":"1","availability":5,"countOfPateints":0}
-,{"doctorName":"Sameer","specialisation":"Cardiology","doctorId":"2","availability":3,"countOfPateints":2},
-{"doctorName":"Saket","specialisation":"Gastroenterology","doctorId":"3","availability":3,"countOfPateints":2},
-{"doctorName":"Rohit","specialisation":"Gynaecology","doctorId":"4","availability":4,"countOfPateints":1},
-{"doctorName":"Abhilash","specialisation":"Neurology","doctorId":"5","availability":4,"countOfPateints":1}]
+[{"doctorName":"Nawaj","specialisation":"Accident and emergency","doctorId":"1","availability":5,"countOfPateints":0},{"doctorName":"Sameer","specialisation":"Cardiology","doctorId":"2","availability":3,"countOfPateints":2},{"doctorName":"Saket","specialisation":"Gastroenterology","doctorId":"3","availability":3,"countOfPateints":2},{"doctorName":"Rohit","specialisation":"Gynaecology","doctorId":"4","availability":4,"countOfPateints":1},{"doctorName":"Abhilash","specialisation":"Neurology","doctorId":"5","availability":4,"countOfPateints":1}]

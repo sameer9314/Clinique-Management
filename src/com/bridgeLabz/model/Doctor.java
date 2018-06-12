@@ -2,6 +2,12 @@ package com.bridgeLabz.model;
 
 import java.util.LinkedList;
 
+/**
+ * Purpose : To get the Doctors details and store to the list.
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class Doctor {
 String doctorName;
 String doctorId;
@@ -49,5 +55,4 @@ public int getCountOfPeople() {
 public void setCountOfPeople(int countOfPateints) {
 	this.countOfPateints = countOfPateints;
 }
-
 }

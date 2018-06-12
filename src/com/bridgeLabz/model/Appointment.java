@@ -4,6 +4,12 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Purpose : To get the appointment and store it to the list.
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class Appointment {
 String patientName;
 String patientId;
@@ -42,5 +48,4 @@ public String getTimeStamp() {
 public void setTimeStamp(String timeStamp) {
 	this.timeStamp = timeStamp;
 }
-
 }

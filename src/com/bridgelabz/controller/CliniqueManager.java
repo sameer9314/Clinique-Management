@@ -16,6 +16,12 @@ import com.bridgelabz.serviceimplementation.ManagerServiceImpl;
 import com.bridgelabz.serviceimplementation.PatientServiceImpl;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * Purpose : To manage All the operations for the Clinique.
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class CliniqueManager {
 	public static ManagerServiceImpl manager=new ManagerServiceImpl();
 	public static PatientServiceImpl patientService=new PatientServiceImpl();
@@ -29,13 +35,21 @@ public class CliniqueManager {
 		Utility.retrievingAppointmentDetails();
 		System.out.println(" Retrieving  Patient details...");
 		Utility.retrievingPatientDetails();
+		System.out.println("                         _______________________");
+		System.out.println("                           WELCOME TO CLINIQUE  ");
+		System.out.println("                         _______________________\n");
 		boolean cliniqueManagerPresent=true;	
 		while(cliniqueManagerPresent==true) {
-			System.out.println(" Select Your Choice :");
+			System.out.println(" _____________________");
+			System.out.println(" Main Counter :   ");
+			System.out.println(" _____________________");
+			System.out.println(" Select Your Choice :   ");
+			System.out.println(" _____________________\n");
 			System.out.println(" Enter 1 To Add New Patient Or To Update Or Delete In The List :");
 			System.out.println(" Enter 2 To Set Appointment Or To Access Patient Details :");
 			System.out.println(" Enter 3 To Access Doctors Details :");
 			System.out.println(" Enter 0 to Close  Clinique :");
+			
 			int choice=Utility.getInt();
 			switch(choice) {
 			case 1 : CliniqueManager.managerServiceManager();
@@ -54,7 +68,15 @@ public class CliniqueManager {
 		}
 	}
 	
+	/**
+	 * Method is written to manage all the services provided For the Patients.
+	 */
 	static void patientServiceManager(){
+		boolean patientServiceManager=true;
+		while(patientServiceManager==true) {
+		System.out.println(" _____________________");
+		System.out.println(" Select Your Choice :   ");
+		System.out.println(" _____________________\n");
 		System.out.println(" Enter 1 To Set Appointment :");
 		System.out.println(" Enter 2 To Show All Patient Details :");
 		System.out.println(" Enter 3 To Search Patient By Name :");
@@ -62,6 +84,7 @@ public class CliniqueManager {
 		System.out.println(" Enter 5 To Search Patient By Id :");
 		System.out.println(" Enter 6 To Show Popular Doctor :");
 		System.out.println(" Enter 7 To Show Popular Specialisation :");
+		System.out.println(" Enter 0 To Exit Patient Service ");
 		int choice =Utility.getInt();
 		switch(choice) {
 		case 1 : patientService.takeAppointment();
@@ -78,14 +101,25 @@ public class CliniqueManager {
 		break;
 		case 7 : patientService.showPopularSpecialisation();
 		break;
+		case 0 : patientServiceManager=false;
+		break;
 		default : System.out.println(" Wrong Choice");
-		}
+		}}
 	}
 	
+	/**
+	 * Method is written to manage all the services provided For the Manager.
+	 */
 	static void managerServiceManager() {
+		boolean managerServiceManager=true;
+		while(managerServiceManager==true) {
+		System.out.println(" _____________________");
+		System.out.println(" Select Your Choice :   ");
+		System.out.println(" _____________________\n");
 		System.out.println(" Enter 1 To Add New Patient ");
 		System.out.println(" Enter 2 To Update Patient Information ");
 		System.out.println(" Enter 3 To Delete Patient From The List ");
+		System.out.println(" Enter 0 To Exit Manager Service ");
 		int choice=Utility.getInt();
 		switch(choice) {
 		case 1 : manager.addPatient();
@@ -94,16 +128,27 @@ public class CliniqueManager {
 		break;
 		case 3 : manager.deletePatient();
 		break;
+		case 0 : managerServiceManager=false;
+		break;
 		default : System.out.println(" Wrong choice ");
-		}
+		}}
 	}
 	
+	/**
+	 * Method is written to manage all the services provided For the Doctors.
+	 */
 	static void doctorServiceManager() {
+		boolean doctorServiceManager=true;
+		while(doctorServiceManager==true) {
+		System.out.println(" _____________________");
+		System.out.println(" Select Your Choice :   ");
+		System.out.println(" _____________________\n");
 		System.out.println(" Enter 1 To Show All Doctors Details ");
 		System.out.println(" Enter 2 To Search Doctor By name ");
 		System.out.println(" Enter 3 To Search Doctor By id ");
 		System.out.println(" Enter 4 To Search Doctor By Its Specialisation ");
 		System.out.println(" Enter 5 To Search Doctor By Availability ");
+		System.out.println(" Enter 0 To Exit Doctor Service ");
 		//System.out.println(" Enter 3 To Search Doctor By id ");
 		int choice=Utility.getInt();
 		switch(choice) {
@@ -117,11 +162,17 @@ public class CliniqueManager {
 		break;
 		case 5 : doctorService.searchDoctorByAvailability();
 		break;
+		case 0 : doctorServiceManager=false;
+		break;
 		default : System.out.println(" Wrong choice ");
+		}
 		}
 	}
 	
 	/**************************** Save Appointment Details In File*****************************************************************/
+	/**
+	 * Method is written to save Appointments Details to the Database using JSON.
+	 */
 	@SuppressWarnings("unchecked")
 	static void savingAppointmentDetails() {
 		JSONArray jsonArray=new JSONArray();
@@ -148,10 +199,12 @@ public class CliniqueManager {
 		}
 		
 		}
-//	static void retrievingAppointmentDetails() {
-//		
-//	}
+
 	/**************************** Save Patient Details In File*****************************************************************/
+	
+	/**
+	 * Method is written to save Patients Details to the Database using JSON.
+	 */
 	@SuppressWarnings("unchecked")
 	static void savingPatientDetails() {
 		JSONArray jsonArray=new JSONArray();
@@ -179,6 +232,10 @@ public class CliniqueManager {
 		}
 	
 	/**************************** Save Doctors Details In File*****************************************************************/
+	
+	/**
+	 * Method is written to save Doctors Details to the Database using JSON.
+	 */
 	@SuppressWarnings("unchecked")
 	static void savingDoctorDetails() {
 		JSONArray jsonArray=new JSONArray();
@@ -205,4 +262,3 @@ public class CliniqueManager {
 		
 		}
 	}
-

@@ -5,9 +5,19 @@ import com.bridgelabz.controller.CliniqueManager;
 import com.bridgelabz.service.ManagerService;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * Purpose : To implement all the behaviours provided for the Manager Service .
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class ManagerServiceImpl implements ManagerService{
 	public static Patient p;
-	 public  void addPatient() {
+	
+	 /**
+	 * Method is written to add Patients to the list. 
+	 */
+	public  void addPatient() {
 		 p=new Patient();
 		 System.out.println(" Enter the patient Name");
 		 ManagerServiceImpl.p.setPatientName(Utility.getString());
@@ -46,6 +56,10 @@ public class ManagerServiceImpl implements ManagerService{
 		 Patient.patientList.add(p);
 		 Utility.printAllPatientDetails();
 	 }
+	
+	 /**
+	  * Method is written to Update Patients details in the list. 
+	  */
 	 public  void updatePatientDetail() {
 		 System.out.println("Enter Patient Id to update the information");
 		 String patientId=Utility.getString();
@@ -57,14 +71,15 @@ public class ManagerServiceImpl implements ManagerService{
 		 }
 		 System.out.println("Enter the patient Name");
 		 Patient.patientList.get(index).setPatientName(Utility.getString());
-		 //System.out.println("Enter the patient Id");
-		// Patient.patientList.get(index).setPatientId(Utility.getString());
 		 System.out.println("Enter the patient Phone Number");
 		 Patient.patientList.get(index).setPatientMobileNumber(Utility.getString());
 		 System.out.println("Enter the patient Age");
 		 Patient.patientList.get(index).setPatientAge(Utility.getString());
 	 }
 	 
+	 /**
+	  * Method is written to delete Patients from the list. 
+	  */
 	 public void deletePatient() {
 		 System.out.println("Enter Patient Id to update the information");
 		 String patientId=Utility.getString();
@@ -76,5 +91,4 @@ public class ManagerServiceImpl implements ManagerService{
 		 }
 		 Patient.patientList.remove(index);
 	 }
-
 }

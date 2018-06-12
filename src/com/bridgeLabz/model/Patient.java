@@ -3,6 +3,12 @@ package com.bridgeLabz.model;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Purpose : To get the Patients Details And store to the list.
+ * @author Sameer Saurabh
+ * @since  12/06/2018
+ * @version 1.0
+ */
 public class Patient {
 String patientName;
 String patientId;
